@@ -42,7 +42,7 @@ class Data():
 
                     # Load the file from a directory on local machine  -- audio file starts at 0.5 seconds and continues for 3 seconds
                     array = librosa.core.load(files, res_type='kaiser_fast', duration=3, offset=0.5)[0]
-                    
+
                     # Emotion is defined in the filename (at position 7:8)
                     if int(file[7:8]) == 2: # Calm
                         emotion = int(file[7:8])

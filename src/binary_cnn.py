@@ -77,7 +77,7 @@ train_datagen=ImageDataGenerator(rescale=1.0/255.0)
 test_datagen=ImageDataGenerator(rescale=1.0/255.0)
 
 
-# Define generators for test and train data 
+# Define generators for test and train data
 train_generator=train_datagen.flow_from_dataframe(
     dataframe=df_final[:1400],
     directory="img_train",

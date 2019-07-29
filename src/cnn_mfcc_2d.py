@@ -71,8 +71,8 @@ opt = keras.optimizers.Adam(lr=0.00001, decay=1e-6)
 model.compile(opt,loss='categorical_crossentropy',metrics=['accuracy'])
 cnnhistory=model.fit(X_train, y_train_hot, batch_size=16, epochs=150, validation_data=(X_test, y_test_hot))
 
-# model.save('best_categorical_model.h5')
-# model = load_model('../models/best_categorical_model.h5')
+# model.save('final_categorical_model.h5')
+# model = load_model('../models/final_categorical_model.h5')
 
 
 

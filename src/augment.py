@@ -21,7 +21,7 @@ class Augment():
 
     def add_random_noise(self):
         ''' Add random noise to the .wav file
-            This function doubles the amount of training data '''
+            This function doubles the amount of original training data '''
 
         noise_list = []
         for i in self.X_train:
@@ -40,7 +40,7 @@ class Augment():
 
     def stretch_array(self, rate):
         ''' Randomly stretch or shrink the time array
-            This function doubles the amount of training data '''
+            This function doubles the amount of original training data '''
 
         stretch = [librosa.effects.time_stretch(audio, rate) for audio in self.X_train]
         if len(self.stretch) == 0:
@@ -50,7 +50,7 @@ class Augment():
 
     def shift_data(self):
         ''' Randomly shift the time array on the X axis
-            This function doubles the amount of training data '''
+            This function doubles the amount of original training data '''
 
         s_range = int(np.random.uniform(low=-5, high = 5)*500)
 
@@ -94,77 +94,43 @@ class Augment():
         with open(filename, 'wb') as f:
             pickle.dump(arr, f)
 
-    def finalize_X_data(self):
+    def finalize_X_data(self, noise_iterations, shift_iterations, stretch_iteration):
         ''' Augment the data, get, resize, and standardize the MFCCs then dump them in a directory '''
 
-        print('Creating random noise for X_train...')
-        self.add_random_noise()
-        self.add_random_noise()
-        self.add_random_noise()
-        self.add_random_noise()
-        self.add_random_noise()
-        self.add_random_noise()
-        self.add_random_noise()
-        print('Random noise created!')
-        print('Shifting data for X_train...')
-        self.shift_data()
-        self.shift_data()
-        print('Data is shifted!')
-        print('Stretching array for X_train...')
-        self.stretch_array(2)
-        self.stretch_array(0.5)
-        print('Array is stretched!')
-        print('Compiling data...')
+        for i in range(noise_iterations):
+            self.add_random_noise(7)
+        for i in range(shift_iterations):
+            self.shift_data(2)
+        for i in range(stretch_iterations):
+            self.stretch_array(2)
+
         self.X_train = self.X_train + self.noise + self.stretch + self.shift
-        print('Data is compiled!')
-        print('Getting MFCCs for X_train...')
         self.X_train = self.get_mfccs(self.X_train)
-        print('MFCCs got got!')
-        print('Resizing MFCCs for X_train')
         self.X_train = self.resize_mfccs(self.X_train)
-        print('MFCCs resized!')
-        print('Standardizing MFCCs for X_train...')
         self.X_train = self.standardize_data(self.X_train)
-        print('MFCCs standardized!')
 
-        print('Getting MFCCs for X_test..')
         self.X_test = self.get_mfccs(self.X_test)
-        print('MFCCs got got!')
-        print('Resizing MFCCs...')
         self.X_test = self.resize_mfccs(self.X_test)
-        print('MFCCs resized!')
-        print('Standardizing MFCCs for X_test...')
         self.X_test = self.standardize_data(self.X_test)
-        print('MFCCs standardized')
 
-        print('Getting MFCCs for X_holdout..')
         self.X_holdout = self.get_mfccs(self.X_holdout)
-        print('MFCCs got got!')
-        print('Resizing MFCCs...')
         self.X_holdout = self.resize_mfccs(self.X_holdout)
-        print('MFCCs resized!')
-        print('Standardizing MFCCs for X_holdout...')
         self.X_holdout = self.standardize_data(self.X_holdout)
-        print('MFCCs standardized')
 
-        print('Dumping pickles...')
         self.dump_pickle('X_train_mfcc.pkl', self.X_train)
         self.dump_pickle('X_test_mfcc.pkl', self.X_test)
         self.dump_pickle('X_holdout_mfcc.pkl', self.X_holdout)
-        print('Pickles are dumped!')
 
     def finalize_y_data(self):
         ''' Create a new y_train to match the size of the augmented X_train '''
 
         mult = len(self.X_train) // len(self.y_train)
         self.y_train = self.y_train * mult
-        print('Dumping pickle...')
         self.dump_pickle('y_train_final.pkl', self.y_train)
-        print('Pickle is dumped!')
 
 def main():
     ad = Augment('X_train', 'X_test', 'X_holdout', 'y_train')
-    ad.finalize_X_data()
+    ad.finalize_X_data(7, 2, 2)
     ad.finalize_y_data()
 
 if __name__ == '__main__':

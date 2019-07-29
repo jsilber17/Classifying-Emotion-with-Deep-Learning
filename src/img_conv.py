@@ -11,7 +11,6 @@ import cv2
 def create_spectrogram(filename,name):
     ''' Create a spectogram of an audio file and save the image to a directory '''
 
-    plt.interactive(False)
     # Load the audio file using Librosa
     clip, sample_rate = librosa.load(filename, sr=None)
 
@@ -57,7 +56,7 @@ def get_y_labels(glob_path):
 
 def dump_pickle(filename, arr):
     ''' Dump a pickle to a directory '''
-    
+
     with open(filename, 'wb') as f:
         pickle.dump(arr, f)
 
