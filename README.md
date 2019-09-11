@@ -23,7 +23,7 @@ The data I used for this project is the Ryerson Audio-Visual Database of Emotion
 
 #### Stretching 
 <p align="center">
-  <img width="600" height="400" src="img/stretch_waveplot.png">
+  <img width="600" height="400" src="img/Stretch_waveplot_noise.png">
 </p>
 
 ## Convolutional Neural Networks 
