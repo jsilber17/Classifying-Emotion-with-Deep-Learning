@@ -32,5 +32,8 @@ The data I used for this project is the Ryerson Audio-Visual Database of Emotion
 </p>
 
 ## Convolutional Neural Networks 
+<p align="center">
+  <img width="800" height=400" src="img/cnn.png">
+</p>
 
 ## Results 
