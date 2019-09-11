@@ -6,6 +6,9 @@ Emotion classification with deep learning has become a more contemporary topic i
 The data I used for this project is the Ryerson Audio-Visual Database of Emotional Speech and Song. There are 2000+ audio files in the database of actors and actresses singing and speaking two different phrases in eight different emotions. Go to https://zenodo.org/record/1188976#.XT5sat-YU5k for a free download of the dataset. 
 
 ### MFCCs 
+<p align="center">
+  <img width="600" height="600" src="mfcc_explanation.png">
+</p>
 
 ### Mel Spectograms 
 
