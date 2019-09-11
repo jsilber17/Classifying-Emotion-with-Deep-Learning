@@ -7,7 +7,7 @@ The data I used for this project is the Ryerson Audio-Visual Database of Emotion
 
 ### MFCCs 
 <p align="center">
-  <img width="600" height="600" src="mfcc_explanation.png">
+  <img width="600" height="600" src="img/mfcc_explanation.png">
 </p>
 
 ### Mel Spectograms 
