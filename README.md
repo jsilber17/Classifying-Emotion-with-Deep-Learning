@@ -26,6 +26,11 @@ The data I used for this project is the Ryerson Audio-Visual Database of Emotion
   <img width="600" height="400" src="img/Stretch_waveplot_noise.png">
 </p>
 
+#### Adding White Noise 
+<p align="center">
+  <img width="600" height="400" src="img/noise_waveplot_noise.png">
+</p>
+
 ## Convolutional Neural Networks 
 
 ## Results 
