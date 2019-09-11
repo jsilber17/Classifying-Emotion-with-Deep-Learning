@@ -10,6 +10,10 @@ The data I used for this project is the Ryerson Audio-Visual Database of Emotion
   <img width="800" height="400" src="img/mfcc_explanation.png">
 </p>
 
+<p align="center">
+  <img width="800" height="400" src="img/mfcc.png">
+</p>
+
 ## EDA 
 <p align="center">
   <img width="600" height="400" src="img/Happy_waveplot.png">
